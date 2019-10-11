@@ -8,20 +8,24 @@ new Vue({
     }, 
     mounted() {
         let box=this.$refs.box.getBoundingClientRect();//获取初始box的位置
-        this.boxPosition={}
+        this.boxPosition={
+            x:box.left,
+            y:box.top
+        }
     },
     methods: {
         down(){
-            this.$refs.whole.addEventListener('mousemove',this.mousemove)
-        },
-        up(){
+            this.$refs.whole.addEventListener('mousemove',this.mousemove,false)
+            this.$refs.whole.addEventListener('mouseup',this.mouseup,false)
+        }, 
+        mouseup(){
             this.$refs.whole.removeEventListener('mousemove',this.mousemove)
-            console.log('leave')
         },
         mousemove(e){
-            console.log(e.screenX)
-            console.log(e.screenY)
-            console.log('move')
+            this.boxPosition={
+                x:e.clientX,
+                y:e.clientY
+            }
         },
     },
 })

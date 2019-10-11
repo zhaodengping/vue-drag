@@ -8,8 +8,8 @@
     <title>vue实现拖拽功能</title>
 </head>
 <body>
-    <div id='app' class="container" ref='whole' >
-        <div class="box" ref='box' @mousedown='down' @mouseup='up'>box</div>
+    <div id='app' class="container" ref='whole'>
+        <div class="box" ref='box' @mousedown.stop='down' :style="{left:boxPosition.x+'px',top:boxPosition.y+'px'}">box</div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="./index.js"></script>
